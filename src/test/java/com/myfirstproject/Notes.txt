@@ -1,0 +1,43 @@
+
+There are 8 selenium locator to locate an element:
+id
+name
+className
+tagName
+linkText
+partialLinkText
+xpath -> there are multiple ways to write xpath
+css -> there are multiple ways to write xpath
+
+* What is the difference between linkText and partialLinkText?
+        *
+        * Similarities : both accept the full text of a name of link
+        * They both should be used only links
+        *
+        * Differences: linkText looks for EXACT text
+        * partialLinkText looks for PART OF A text
+        *
+        * Note: When using partialLinkText, BE CAREFUL!!!!
+        * if there is other partial matches, it returns the first partial link
+        * Best practice is use linkText
+        * If you use partialLinkText, use enough words
+        *
+        * When is partialLinkText is use full?
+        * - if link text is too long
+        * - if there is a space before or after the text
+
+        * isDisplayed is used to verify isf an element is displayed on the page
+                 * It return true if element is exists, return false if elements does not exist
+
+
+there are 2 type of xpath, abselut and relative:
+Absolute xpath ==> // body/div/header/div/div/div
+Relative xpath ==> //dice[@id='logo']; or //div[@class='flex-col logo];
+
+In some websites ids can be changeable for security purposes, it can change evey time when you refresh/load the page
+we need to use other keys
+
+==> we can select from a DROPDOWN with 3 different ways:
+1. Select and print option 1 using index using selectByIndex();
+2. Select and print option 2 by value using selectByValue();
+3. Select and print default  value by visible textd using selectByVisibleText();

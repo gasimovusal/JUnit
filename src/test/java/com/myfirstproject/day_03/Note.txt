@@ -1,0 +1,10 @@
+
+There are 8 selenium locator to locate an element:
+id
+name
+className
+tagName
+linkText
+partialLinkText
+xpath -> there are multiple ways to write xpath
+css -> there are multiple ways to write xpath
