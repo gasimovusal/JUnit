@@ -1,12 +1,7 @@
 package com.myfirstproject.day_05;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Before;
+import com.github.javafaker.Faker;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
 
 public class Java_Faker {
     /* fake data = mack data => data that is not real
@@ -21,19 +16,33 @@ public class Java_Faker {
     4. tech lead - team teach - dev lead
      */
 
-
-
-    WebDriver driver;
-    @Before
-    public void setUp(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-    }
     // faker does not come from selenium, we have to import from meaven library
     @Test
     public void faker(){
+        Faker faker = new Faker();
+        // generate fake data
+        String fName = faker.name().firstName();
+        System.out.println(fName);
+        String lName = faker.name().lastName();
+        System.out.println(lName);
+        String fullName = faker.name().fullName();
+        System.out.println(fullName);
+        String userName = faker.name().username();
+        System.out.println(userName);
+        String title = faker.name().title();
+        System.out.println(title);
+        String city = faker.address().city();
+        System.out.println(city);
+        String state = faker.address().state();
+        System.out.println(state);
+        String phoneNumber = faker.phoneNumber().cellPhone();
+        System.out.println(phoneNumber);
+        String email = faker.internet().emailAddress();
+        System.out.println(email);
+        String randomZipCode = faker.number().digits(5);
+        System.out.println(randomZipCode);
+        String fakeEmail = faker.name().firstName() + faker.number().digits(3)+faker.internet().emailAddress();
+        System.out.println(fakeEmail);
 
     }
 }
