@@ -43,6 +43,8 @@ public class Java_Faker {
         System.out.println(randomZipCode);
         String fakeEmail = faker.name().firstName() + faker.number().digits(3)+faker.internet().emailAddress();
         System.out.println(fakeEmail);
+        String password = faker.internet().password();
+        System.out.println(password);
 
     }
 }

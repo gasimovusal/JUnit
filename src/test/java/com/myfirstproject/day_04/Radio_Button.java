@@ -45,12 +45,12 @@ public class Radio_Button {
         driver.findElement(By.xpath("(//input[@type='radio'])[2]")).click();
 //        Click Sign Up
         driver.findElement(By.name("websubmit")).click();
-//        Enter birthday : monath
+//        Enter birthday : month
         // 1. locate the dropdown element
         WebElement month = driver.findElement(By.xpath("//select [@aria-label='Month']"));
-        // 2. create select object
+//        // 2. create select object
         Select selectMonth = new Select(month);
-        // select Jan
+//        // select Jan
         selectMonth.selectByValue("1");
         // select day
         WebElement day = driver.findElement(By.xpath("//select [@aria-label='Day']"));
