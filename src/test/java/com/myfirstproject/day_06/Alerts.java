@@ -4,6 +4,7 @@ import com.myfirstproject.utilities.Test_Base;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 public class Alerts extends Test_Base {
 /*
@@ -15,16 +16,17 @@ acceptAlert() => click on the first alert, verify the text “I am a JS Alert”
 dismissAlert()=> click on the second alert, verify text "I am a JS Confirm”, click cancel, and Verify “You clicked: Cancel”
 sendKeysAlert()=> click on the third alert, verify text “I am a JS prompt”, type “Hello World”, click OK, and Verify “You entered: Hello Word”
  */
+
     @Test
     public void acceptAlert() throws InterruptedException {
 //    acceptAlert() => click on the first alert, verify the text “I am a JS Alert” ,
 //    click OK ,and Verify “You successfully clicked an alert”
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         driver.findElement(By.xpath("//button[@onclick='jsAlert()']")).click();
-        String actualAllertText = driver.switchTo().alert().getText();
+        String actualAlertText = driver.switchTo().alert().getText();
         Thread.sleep(1500);
-        String expectedAllertText = "I am a JS Alert";
-        Assert.assertEquals(expectedAllertText, actualAllertText);
+        String expectedAlertText = "I am a JS Alert";
+        Assert.assertEquals(expectedAlertText, actualAlertText);
         // click ok
         driver.switchTo().alert().accept();
         String actualResultText = driver.findElement(By.id("result")).getText();

@@ -22,7 +22,7 @@ public class Homework_Amazon_Dropdown {
     Go to https://www.amazon.com/
     Find the element of the dropdown element. HINT: By.id(“searchDropdownBox")
     Print the first selected option and assert if it equals “All Departments”.If it fails, then comment that code out and continue rest of the test case.
-    Select the 4th option by index (index of 3) and assert if the name is “Amazon Devices”.(after you select you need to use get first selected option method). If it fails, then comment that code out and continue rest of the test case.
+    Select the 4th option by index (index of 3) and assert if the name is “Amazon Explore”.(after you select you need to use get first selected option method). If it fails, then comment that code out and continue rest of the test case.
     Print all of the dropdown options-getOptions(); method returns the List<WebElement>. Using loop, print all options.
     Print the the total number of options in the dropdown
     Assert if ‘Appliances’ is a drop down option. Print true if “Appliances” is an option. Print false otherwise.
@@ -42,22 +42,32 @@ public class Homework_Amazon_Dropdown {
 
     @Test
     public void test() throws InterruptedException {
+        // Find the element of the dropdown element. HINT: By.id(“searchDropdownBox")
         WebElement dropdown = driver.findElement(By.id("searchDropdownBox"));
+        //  Print the first selected option and assert if it equals “All Departments”.
         Select select = new Select(dropdown);
         select.selectByVisibleText("All Departments");
         WebElement firstSelectedOption = select.getFirstSelectedOption();
         System.out.println("First selected option: " + firstSelectedOption.getText());
         Assert.assertEquals("All Departments", firstSelectedOption.getText());
+        // Print all of the dropdown options-getOptions(); method returns the List<WebElement>. Using loop, print all options.
         List<WebElement> listOfOptions = select.getAllSelectedOptions();
         for (WebElement eachSelectedOption : listOfOptions){
-            System.out.println(eachSelectedOption.getText());
+            System.out.println("buna bax " + eachSelectedOption.getText());
         }
-        //String fourthOption = listOfOptions.get(3).toString();
-//        Assert.assertEquals("Amazon Devices", fourthOption);
+        // Select the 4th option by index (index of 3) and assert if the name is “Amazon Explore”.
+        WebElement actualFourthoption = select.getOptions().get(3);
+        System.out.println("Fourth option is: " + actualFourthoption.getText());
+        String expectedFourthOption = "Amazon Explore";
+        Assert.assertEquals(expectedFourthOption, actualFourthoption.getText());
         List<WebElement> allOptions = select.getOptions();
         for(WebElement printALLOptions : allOptions){
             System.out.println("Dropdown option " + printALLOptions.getText());
         }
+        // Print the total number of options in the dropdown
+        int totalOptions = allOptions.size();
+        System.out.println(totalOptions);
+        // Assert if ‘Appliances’ is a drop down option. Print true if “Appliances” is an option. Print false otherwise.
         boolean flag = false;
         for (WebElement appliances : allOptions){
             if (appliances.getText().equals("Appliances")){

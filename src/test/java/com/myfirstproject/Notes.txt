@@ -40,4 +40,4 @@ we need to use other keys
 ==> we can select from a DROPDOWN with 3 different ways:
 1. Select and print option 1 using index using selectByIndex();
 2. Select and print option 2 by value using selectByValue();
-3. Select and print default  value by visible textd using selectByVisibleText();
+3. Select and print default  value by visible text using selectByVisibleText();
