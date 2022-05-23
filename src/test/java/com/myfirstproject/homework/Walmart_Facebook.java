@@ -1,9 +1,9 @@
-package com.myfirstproject.day_02;
+package com.myfirstproject.homework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Homework1 {
+public class Walmart_Facebook {
 
     /*
         Create a new class : Homework1

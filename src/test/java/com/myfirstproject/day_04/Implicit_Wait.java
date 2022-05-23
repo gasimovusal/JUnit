@@ -2,6 +2,7 @@ package com.myfirstproject.day_04;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -19,6 +20,7 @@ public class Implicit_Wait {
         // we can use implicit wait right after creating the driver object
 
         driver.get("https://www.google.com");
+        driver.findElement(By.name("q"));//puts 30 seconds wait ID NEEDED
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.myfirstproject.day_05;
+package com.myfirstproject.homework;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -12,9 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Homework_Amazon_Dropdown {
+public class Amazon_Dropdown {
 
     /*
     Create A Class: AmazonDropdown
@@ -56,10 +58,10 @@ public class Homework_Amazon_Dropdown {
             System.out.println("buna bax " + eachSelectedOption.getText());
         }
         // Select the 4th option by index (index of 3) and assert if the name is “Amazon Explore”.
-        WebElement actualFourthoption = select.getOptions().get(3);
-        System.out.println("Fourth option is: " + actualFourthoption.getText());
+        WebElement actualFourthOption = select.getOptions().get(3);
+        System.out.println("Fourth option is: " + actualFourthOption.getText());
         String expectedFourthOption = "Amazon Explore";
-        Assert.assertEquals(expectedFourthOption, actualFourthoption.getText());
+        Assert.assertEquals(expectedFourthOption, actualFourthOption.getText());
         List<WebElement> allOptions = select.getOptions();
         for(WebElement printALLOptions : allOptions){
             System.out.println("Dropdown option " + printALLOptions.getText());
@@ -76,6 +78,21 @@ public class Homework_Amazon_Dropdown {
             }
         }
         Assert.assertTrue(flag);
+
+        // BONUS: Assert if the dropdown is in Alphabetical Order
+        List<String> optionsList = new ArrayList<>();
+        for (WebElement w : allOptions) {
+            optionsList.add(w.getText());
+        }
+        Collections.sort(optionsList);
+
+        List<String> sortedList=new ArrayList<>();
+        for (String w : optionsList) {
+            sortedList.add(w);
+        }
+        System.out.println("Options are in alphabetic order");
+        Assert.assertTrue(optionsList.equals(sortedList));
+
     }
 
     @After

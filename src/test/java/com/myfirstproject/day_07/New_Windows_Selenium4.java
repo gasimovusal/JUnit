@@ -10,7 +10,7 @@ public class New_Windows_Selenium4 extends Test_Base {
     public void newWindow(){
         // open google on window 1
         driver.get("https://www.google.com");
-        String googleWindowHndle = driver.getWindowHandle();
+        String googleWindowHandle = driver.getWindowHandle();
         System.out.println("Google Title: " + driver.getTitle());
         // open window on window 2
         driver.switchTo().newWindow(WindowType.WINDOW); // creating new window and switch to that window
@@ -25,13 +25,13 @@ public class New_Windows_Selenium4 extends Test_Base {
 
         // swtich between windows
         // switch to amazon
-        driver.switchTo().window(googleWindowHndle);
-        System.out.println("Amazon: " + driver.getTitle());
+        driver.switchTo().window(googleWindowHandle);
+        System.out.println("Google: " + driver.getTitle());
         // switch to amazon
         driver.switchTo().window(amazonWindowHandle);
         System.out.println("Amazon: " + driver.getTitle());
         // switch to linkedin
         driver.switchTo().window(linkedinWindowHandle);
-        System.out.println("Amazon: " + driver.getTitle());
+        System.out.println("Linkedin: " + driver.getTitle());
     }
 }
