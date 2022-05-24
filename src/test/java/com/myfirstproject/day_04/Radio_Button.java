@@ -33,9 +33,9 @@ public class Radio_Button {
 //        Click on Create new account
         driver.findElement(By.linkText("Create new account")).click();
 //        Enter first name
-        driver.findElement(By.name("firstname")).sendKeys("fname"); // fake firstname
+        driver.findElement(By.name("firstname")).sendKeys("Yaren"); // fake firstname
 //        Enter last name
-        driver.findElement(By.name("lastname")).sendKeys("lname"); // fake
+        driver.findElement(By.name("lastname")).sendKeys("Eker"); // fake
 //        Enter mobile number or email
         driver.findElement(By.name("reg_email__")).sendKeys("7804075355"); // fake
 //        Enter new password
@@ -51,15 +51,15 @@ public class Radio_Button {
 //        // 2. create select object
         Select selectMonth = new Select(month);
 //        // select Jan
-        selectMonth.selectByValue("1");
+        selectMonth.selectByValue("10");
         // select day
         WebElement day = driver.findElement(By.xpath("//select [@aria-label='Day']"));
         Select selectDay = new Select(day);
-        selectDay.selectByValue("10");
+        selectDay.selectByValue("17");
         // select year
         WebElement year = driver.findElement(By.xpath("//select [@aria-label='Year']"));
         Select selectYear = new Select(year);
-        selectYear.selectByValue("2000");
+        selectYear.selectByValue("2002");
 
         WebElement submit = driver.findElement(By.xpath("(//button[@type='submit'])[2]"));
         submit.click();
