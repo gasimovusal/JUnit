@@ -51,6 +51,19 @@ public class DropDown {
     }
 
     @Test
+    public void selectByValueTest() throws InterruptedException {
+        //2.Create method selectByValueTest Select Option 2 by value
+        //1-Locate the dropDown
+        WebElement dropDown = driver.findElement(By.id("dropdown"));
+        //2-Create a a select object
+        Select select = new Select(dropDown);
+        //3-Select any option by using selectByValue
+        Thread.sleep(3000);
+        select.selectByValue("2");
+
+    }
+
+    @Test
     public void selectByValue() throws InterruptedException {
         //2.Create method selectByValueTest Select Option 2 by value
 

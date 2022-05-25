@@ -24,24 +24,27 @@ public class Q01 extends Test_Base {
         WebElement emoji = driver.findElement(By.xpath("(//span[@class='mdl-tabs__ripple-container mdl-js-ripple-effect'])[2]"));
         emoji.click();
         Thread.sleep(1500);
-        List<WebElement> listOfEmojis = driver.findElements(By.xpath("allEmojis"));
+        List<WebElement> listOfEmojis = driver.findElements(By.xpath("//div[@id='nature']/div/img"));
         for(WebElement w : listOfEmojis){
             w.click();
         }
         Thread.sleep(1500);
+        WebElement smile = driver.findElement(By.xpath("(//span[@class='mdl-tabs__ripple-container mdl-js-ripple-effect'])[1]"));
+        smile.click();
+        List<WebElement> smileEmojis = driver.findElements(By.xpath("//div[@id='smiles']//img[@class='emoji']"));
+        for(WebElement w : smileEmojis){
+            w.click();
+        }
         // we need to get out of iframe tag
         // fill the form,(Fill the form with the texts you want)
         driver.switchTo().defaultContent();
         List<WebElement> textBoxes = driver.findElements(By.xpath("//input[@class='mdl-textfield__input']"));
         List<String> words = new ArrayList<>(Arrays.asList("This","iframe","example","looks","very","funny","does","not","it","?","!"));//11
-//                                                         1        2      3         4       5      6       7     8     9   10   11
+//                                                           1        2        3        4       5      6       7     8     9   10  11
         for(int i = 0; i<textBoxes.size(); i++){
             textBoxes.get(i).sendKeys(words.get(i));
         }
         Thread.sleep(1500);
 
     }
-
-
-
 }
