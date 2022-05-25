@@ -65,3 +65,7 @@ Find the number of row
 Find the number of used row
 Print country, capitol key value pairs as map object
 
+********** How do you capture screenshot in your automation framework?/How do you get screenshot in selenium?
+     * I use getScreenshots method to capture teh screenshot.
+     * Actually we have a reusable methods to capture the screenshot
+

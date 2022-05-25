@@ -2,13 +2,20 @@ package com.myfirstproject.utilities;
 
 import com.myfirstproject.day_03.Web_Driver_Manager;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 public abstract class Test_Base {
     /*
@@ -67,5 +74,20 @@ public abstract class Test_Base {
                 return;
             }
         }
+    }
+
+    public void takeScreenshot() throws IOException {
+        // taking screenshot using getScreenshotAs as method
+        File image = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        /* alternatively
+        TakesScreenshot ts = (TakesScreenshot)driver;
+        File img = ts.getScreenshotAs(OutputType.FILE);
+         */
+
+        // saving the screenshot in this path
+        String currentDate = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        String path = System.getProperty("user.dir")+"/test_output/Screenshots/"+currentDate+"test-image.png";
+        File finalPath = new File(path);
+        FileUtils.copyFile(image, finalPath); // copyingfile accepts source and destination
     }
 }
