@@ -1,6 +1,8 @@
 package com.myfirstproject.utilities;
 
-import com.myfirstproject.day_03.Web_Driver_Manager;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -25,6 +27,9 @@ public abstract class Test_Base {
     we dont want to create of object of Test_Base
      */
     protected static WebDriver driver;
+    protected ExtentReports extentReports;
+    protected ExtentTest extentTest;
+    protected ExtentHtmlReporter extentHtmlReporter;
 
     @Before
     public void setUp() {
@@ -32,6 +37,33 @@ public abstract class Test_Base {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+
+        // report path creater the html report right under test-output package in project
+        String currentDate = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        String path = System.getProperty("user.dir")+"/test_output/Reports/"+currentDate+"test_report.html";
+
+        // create html reporter using the path
+        extentHtmlReporter = new ExtentHtmlReporter(path);
+
+        // create extent report
+        extentReports = new ExtentReports();
+
+        // add custom information
+        extentReports.setSystemInfo("Environment", "Test Environment");
+        extentReports.setSystemInfo("Browser", "Chrome");
+        extentReports.setSystemInfo("Application", "TechPro");
+        extentReports.setSystemInfo("SQA", "Vusal");
+
+        // this info will be seen on screen
+        extentHtmlReporter.config().setDocumentTitle("TechProEd Blue Car");
+        extentHtmlReporter.config().setReportName("TechProEd extent report");
+
+        // attach html and extent reports
+        extentReports.attachReporter(extentHtmlReporter);
+
+        // report is complete. now we need to reate test using extentTest ogject
+        extentTest = extentReports.createTest("My project extent report", "This is for smoke test report");
+
     }
 
     @After

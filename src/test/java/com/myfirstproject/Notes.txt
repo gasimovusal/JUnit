@@ -69,3 +69,51 @@ Print country, capitol key value pairs as map object
      * I use getScreenshots method to capture teh screenshot.
      * Actually we have a reusable methods to capture the screenshot
 
+******** Interview questions ********
+
+==> How do you get the report?
+* When I do manual testing, I capture the screenshot manually and save on a word doc, then upload the document to the jira
+* When I automate the user story, I use extent reports for generation the test reports
+* Extend reports is customizable
+* I can configure the extent reports based on the project information
+* In my project, we customized extent reports in a way that it takes the screenshot automatically, when test case fails
+
+==> What are the advantages of extend report?
+* Open source, free
+* Works with different browsers an platform
+* It works with different frameworks like junit, testng, cucumber
+* We can log each step
+* It is customizable
+
+==> How extent report generates reports? How extent reports work?
+* We are using maven and I have extent reports dependency
+* I have reusable class. In that class I have extent reports configuration
+    * Extent reports
+    * Extent HTML Reporters ==> are generation user for generating the report
+    * Extent Tess
+* For example, extent reports and extent html report can be used for adding custom information such as platform, browser, environment. Extent test object is used for logging in info such as pass, fail, working, skip
+
+==> Where do you get your dependency?
+* We have company repository. I check the repo and get the dependency
+
+==> What is dependency is not in your company repository
+* I need to raise a request for the dependency so the company can add.
+* I ask QA manager, test lead, tech lead
+
+******************************** JSExecutor ********************************
+
+==> What is JC Executor?
+* It is  an API that is used to execute javascript commands in Selenium
+
+==> Why you are learning javascipt executor
+* We may need js methods to interact with webelement, when traditional selenium methods are not enough, such as click, scrolling into specific element
+
+==> What we can do with JS Executor
+* click. especially good with clicking hidden element
+* scroll onto specific elements, scroll the all the way down/up/right/left
+* type in an input
+* change the value if an element
+* Hover over
+* Change the color, background color, add border
+
+

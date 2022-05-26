@@ -10,7 +10,7 @@ public class Screenshots extends Test_Base {
     @Test
     public void screenshotTest() throws Exception {
         driver.get("https://google.com");
-        // create a resuable method
+        // create a reusable method
         //takeScreenshot();
         //  locating input, typing tesla cybertruck, and clicking enter
         driver.findElement(By.name("q")).sendKeys("tesla model s"+ Keys.ENTER);
