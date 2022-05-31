@@ -7,10 +7,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
@@ -21,7 +18,7 @@ import java.util.Date;
 
 public abstract class Test_Base {
     /*
-    Test_Base is a classs that has repeated pre condition and post condition
+    Test_Base is a classs that has repeated pre-condition and post condition
     we hvae @Before and @After methods
     Test_Base should be abstract. we just want to implement the methods in Test_Base. we are hiding the details.
     we dont want to create of object of Test_Base
@@ -35,7 +32,7 @@ public abstract class Test_Base {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // whenever this driver is used and need time to wait, then wait
         driver.manage().window().maximize();
 
         // report path creater the html report right under test-output package in project
@@ -63,14 +60,12 @@ public abstract class Test_Base {
 
         // report is complete. now we need to reate test using extentTest ogject
         extentTest = extentReports.createTest("My project extent report", "This is for smoke test report");
-
     }
 
     @After
     public void tearDown() {
         driver.quit();
     }
-
     /*
      * Create a reusable method for clicking checkbox
      * @param checkboxElement : WebElement of the checkbox
@@ -121,5 +116,58 @@ public abstract class Test_Base {
         String path = System.getProperty("user.dir")+"/test_output/Screenshots/"+currentDate+"test-image.png";
         File finalPath = new File(path);
         FileUtils.copyFile(image, finalPath); // copyingfile accepts source and destination
+    }
+
+    //  ******************* JS Executor Methods *******************
+
+    //  Scrolls onto a specific element. Param : webelement
+    public void scrollIntoViewByJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+    //    Scroll all the way down of a page
+    public void scrollAllDownByJS(){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+    //    Scroll al the way up of a page
+    public void scrollAllUpByJS(){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)"); // dont forget to put - before document
+    }
+    //    Click on a specific element. Param: WebElement
+    public void clickByJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click()",element);
+    }
+    //    Set the value of an input using js executor. Params: WebElement element, String text
+//    This method changes the value attribute of an element.
+//    It changes the input text
+    public void setValueByJS(WebElement element, String text){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].setAttribute('value','"+text+"')",element);
+    }
+
+    //    get the value of an input. param: idOfElement
+    public void getValueByJS(String idOfElement){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        String value=js.executeScript("return document.getElementById('"+idOfElement+"').value").toString();
+        System.out.println(value);
+//        How you get the value of an input box?
+//        We can js executor.
+//        How?
+//        I can get the element using js executor, and get the value of the element.
+//        For example, I can get the element by id, and use value attribute to get the value of in an input
+//        I have to do this, cause getText in this case does not return teh text in an input
+    }
+
+    //    Changes the changeBackgroundColorByJS of an element. Params: WebElement element, String color
+    public void changeBackgroundColorByJS(WebElement element, String color){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].style.backgroundColor='"+color+"'",element);
+    }
+    public void addBorderWithJS(WebElement element, String borderStyle){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].style.border='"+borderStyle+"'",element);
     }
 }

@@ -69,7 +69,7 @@ Print country, capitol key value pairs as map object
      * I use getScreenshots method to capture teh screenshot.
      * Actually we have a reusable methods to capture the screenshot
 
-******** Interview questions ********
+        ******************************** Interview questions ********************************
 
 ==> How do you get the report?
 * When I do manual testing, I capture the screenshot manually and save on a word doc, then upload the document to the jira
@@ -100,7 +100,7 @@ Print country, capitol key value pairs as map object
 * I need to raise a request for the dependency so the company can add.
 * I ask QA manager, test lead, tech lead
 
-******************************** JSExecutor ********************************
+        ******************************** JSExecutor ********************************
 
 ==> What is JC Executor?
 * It is  an API that is used to execute javascript commands in Selenium
@@ -115,5 +115,82 @@ Print country, capitol key value pairs as map object
 * change the value if an element
 * Hover over
 * Change the color, background color, add border
+
+==> What is javascript executor?
+* js executor is an API to execute javascript comments in selenium
+
+==> When did you use it?
+* when we can not interact with some webelements with a traditional selenium methods
+* For example, when we cannot click, scroll, get text… then we can use js executor
+
+==> How do you scroll with selenium?
+* There are 2 ways: actions class, js executor
+* Actually, I am using js executor, since it is better
+* For example, with js executor, I can scroll to a specific element(scrollIntoView), or right, left, all the way bottom,…
+* We have a reusable method that I can call to scroll on a specific element
+
+==> How do you get the text in an input?
+* I use getText() method for getting the text on a page.
+* HOWEVER, we need to use JSExecutor to get the input value. I have a reusable method to get the value from an input.
+
+==> What would you do if your selenium click doesn’t work?
+* I can use javascript executor click. I can get the element and click using javascript.
+
+==> Type of waits
+1. Hard Wait : Thread.sleep(millisecond)
+* Java wait.
+* Waits for the given time. NO MORE NO LESS.
+* We should avoid using this wait. Avoid especially putting too many hard wait.
+* This will make the test execution time longer.
+
+2. Dynamic Wait
+* Implicit Wait: driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    * Selenium wait
+    * Wait UP TO the given time.
+    * whenever this driver is used and need time to wait, then wait
+    * We should use dynamic wait
+    * Global wait. When you use implicit wait once, then whenever driver is called, then implicit wait applies.
+* ExplicitWait:
+    * Selenium wait. Dynamic wait
+    * Wait UP TO the given time.
+    * We should use dynamic wait
+    * Local wait. We will apply the wait on to the specific elements
+    * We must create a WebDriverWait object
+    * This sometime handles wait isse BETTER THAN IMPLICIT WAIT
+        * Element is not visible
+        * Element no clickable
+        * Text not displayed
+* Fluent Wait:
+    * This is a type of Explicit wait.
+    * We can put polling number.
+    * We can ignore exception
+
+        ******************************** Interview questions ********************************
+
+1. What are the selenium waits?
+    * Implicit wait
+    * Explicit wait
+        * Fluent wait
+2. Which one do you prefer? Why?
+    * It depends on the test case. I already use implicit wait in my driver class. But explicit wait works better. So I prefer explicit wait in some cases.
+    * For example, when I work with dynamically loaded elements, then explicit wait works better for waiting and locating the elements.
+3. What might be the reason of test case failure?
+    * Wrong locator-typo, wrong values,…
+    * Not synchronized. Timing issue.
+    * Page is too slow, internet is slow, database is slow, hosting problem,…
+    * Element may not be visible
+    * Iframe
+    * Multiple window
+    * Alert, pop-ups, cookies
+    * Captcha code
+4. What do you do when your test case fails?
+    * Read error message on the console. I see the error message and the line of the error. Then I can read which part of the code is fails. Error message gives me which class, which line, what error, …
+    * Check the locators, time issue, element visibility, iframe, pop ups, …
+    * Manual testing again to see my automation logic is correct. To also check the functional is working
+5. Can you use implicit wait and explicit wait together?
+    * Yes. Implicit wait is in driver class. When implicit doesn’t work, then I can use explicit wait. I have reusable methods for explicit waits
+6. What is the difference between implicit and explicit wait?
+    * Implicit is global(applies wait to the driver whenever driver is used), explicit is local(I have to call explicit wait every time for new element)
+    * Explicit wait works with expected condition. We have to create WebDriverWait object. Has more option such as visibility, clickibility, text be
 
 
