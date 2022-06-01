@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class Log4J extends Test_Base {
 
@@ -17,5 +16,8 @@ public class Log4J extends Test_Base {
         driver.get("https://www.carettahotel.com/");
         logger.info("Clicking on Login Button");
         driver.findElement(By.linkText("Log in")).click();
+        logger.fatal("Fatal Log");//PRINTS by default with no configuration
+        logger.error("Error Log");//ERROR by default with no configuration
+        logger.debug("Debug Log");
     }
 }

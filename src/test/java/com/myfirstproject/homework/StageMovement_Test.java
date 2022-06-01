@@ -27,8 +27,8 @@ public class StageMovement_Test extends Test_Base {
         WebElement addToCart = driver.findElement(By.xpath("(//span[.='Add to cart'])[2]"));
         actions.click(addToCart).perform();
         Thread.sleep(2000);
-//        WebElement verifyAddition = driver.findElement(By.xpath("//span[@class='ajax_cart_product_txt ']"));
-//        Assert.assertEquals("There is 1 item in your cart.", verifyAddition.getText());
+        WebElement verifyAddition = driver.findElement(By.xpath("//span[@class='ajax_cart_product_txt ']"));
+        Assert.assertTrue(verifyAddition.isDisplayed());
         WebElement verifyColorSize = driver.findElement(By.xpath("//span[.='Black, S']"));
         Assert.assertEquals("Black, S", verifyColorSize.getText());
         WebElement verifyCartQuantity = driver.findElement(By.xpath("(//span[.='1'])[1]"));
@@ -44,8 +44,8 @@ public class StageMovement_Test extends Test_Base {
 
         WebElement proceedToCheckout = driver.findElement(By.xpath("//a[@class='btn btn-default button button-medium']"));
         proceedToCheckout.click();
-//        WebElement titleOfCheckoutPage = driver.findElement(By.xpath("//h1[@id='cart_title']"));
-//        Assert.assertEquals("Shopping-cart summary", titleOfCheckoutPage.getText());
+        WebElement titleOfCheckoutPage = driver.findElement(By.xpath("//h1[@id='cart_title']"));
+        Assert.assertTrue(titleOfCheckoutPage.isDisplayed());
         WebElement verifyItemInStock = driver.findElement(By.xpath("//span[@class='label label-success']"));
         Assert.assertEquals("In stock", verifyItemInStock.getText());
 
@@ -66,8 +66,8 @@ public class StageMovement_Test extends Test_Base {
         WebElement shippingPage = driver.findElement(By.xpath("//h1[@class='page-heading']"));
         Assert.assertTrue(shippingPage.isDisplayed());
         driver.findElement(By.name("processCarrier")).click();
-//        String allertTitle = driver.switchTo().alert().getText();
-//        Assert.assertEquals("You must agree to the terms of service before continuing.", allertTitle);
+        WebElement alertTitle = driver.findElement(By.xpath("//p[@class='fancybox-error']"));
+        Assert.assertTrue(alertTitle.isDisplayed());
         driver.findElement(By.xpath("//a[@class='fancybox-item fancybox-close']")).click();
         driver.findElement(By.xpath("//*[@id='cgv']")).click();
         driver.findElement(By.name("processCarrier")).click();

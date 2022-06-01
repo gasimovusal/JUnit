@@ -35,7 +35,7 @@ public abstract class Test_Base {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // whenever this driver is used and need time to wait, then wait
         driver.manage().window().maximize();
 
-        // report path creater the html report right under test-output package in project
+        // report path create the html report right under test-output package in project
         String currentDate = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         String path = System.getProperty("user.dir")+"/test_output/Reports/"+currentDate+"test_report.html";
 
