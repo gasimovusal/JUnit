@@ -21,7 +21,7 @@ public class Synchronization extends Test_Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         /*
-        Hello World is visible in HTML ocde but its not displayed when you load the page
+        Hello World is visible in HTML code but its not displayed when you load the page
         we need explicit wait for hidden elements
         explicit wait can handle hidden elements, implicit wait is not enough for hidden elements
          */
