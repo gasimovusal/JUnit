@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NoSuchElement_Exception extends Test_Base{
+public class NoSuchElement_Exception extends Test_Base {
 
     WebDriver driver;
     @Before

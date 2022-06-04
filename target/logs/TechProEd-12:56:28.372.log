@@ -1,0 +1,5 @@
+2022-06-02 12:56:28,370 INFO c.m.d.Log4J [main] Info log
+2022-06-02 12:56:28,372 DEBUG c.m.d.Log4J [main] Debug log
+2022-06-02 12:56:28,373 ERROR c.m.d.Log4J [main] Error log
+2022-06-02 12:56:28,373 FATAL c.m.d.Log4J [main] Fatal log
+2022-06-02 12:56:28,373 WARN c.m.d.Log4J [main] Warn log

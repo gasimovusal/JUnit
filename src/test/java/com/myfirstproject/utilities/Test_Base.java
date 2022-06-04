@@ -62,10 +62,10 @@ public abstract class Test_Base {
         extentTest = extentReports.createTest("My project extent report", "This is for smoke test report");
     }
 
-//    @After
-//    public void tearDown() {
-//        driver.quit();
-//    }
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
     /*
      * Create a reusable method for clicking checkbox
      * @param checkboxElement : WebElement of the checkbox
